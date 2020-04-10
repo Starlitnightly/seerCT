@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="26">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>19</ID>
+      <Description>"进去矿脉先激活"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>aobscan(ss,89 4A 14 8B 4D 90)
+[ENABLE]
+
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+alloc(sh,4)
+registersymbol(sh)
+
+newmem:
+
+mov [sh],edx
+
+
+originalcode:
+mov [edx+14],ecx
+mov ecx,[ebp-70]
+
+exit:
+jmp returnhere
+
+ss:
+jmp newmem
+nop
+returnhere:
+
+
+ 
+ 
+[DISABLE]
+dealloc(newmem)
+dealloc(sh)
+ss:
+mov edi,[ebx+14]
+mov ebx,[ebp-40]
+
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>21</ID>
+          <Description>"使用说明:捡一个矿，矿物地址会变成那个矿的地址，然后直接改数值即可"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>20</ID>
+          <Description>"矿物地址[自动变化]"</Description>
+          <VariableType>4 Bytes</VariableType>
+          <Address>sh</Address>
+          <Offsets>
+            <Offset>14</Offset>
+          </Offsets>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+  <Comments>关于表格信息:
+</Comments>
+</CheatTable>
